@@ -1,8 +1,8 @@
 2020-03
 Deep Sea Treasure Land
-0.31: Taka Sha Book 
-0.28: Small Cracken[1]
-0.23: Hill Earl Cap[1]
-0.07: Monoculars
-0.06: Kraken Treasure Key
-0.05: One Eye Captain
+0.31:Taka_Sha_Book 
+0.28:Small_Cracken
+0.23:Hill_Earl_Cap
+0.07:Monoculars
+0.06:Kraken_Treasure_Key
+0.05:One_Eye_Captain
