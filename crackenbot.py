@@ -8,7 +8,7 @@ TOKEN = os.getenv('DISCORD_TOKEN')
 GUILD = os.getenv('DISCORD_GUILD')
 
 bot = commands.Bot(command_prefix='!cb ')
-index = []
+index = {}
 
 @bot.command('ping', help='Ping the bot. Are you here?')
 @commands.has_role('true mmo players')

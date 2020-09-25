@@ -1,2 +1,21 @@
-1:2020-03:Deep Sea Treasure Land
-2:2020-09:??
+2019-01:Holidays Waltz
+2019-02:Graceful Cherry Blossom
+2019-03:Sky Fairy
+2019-04:Magic Masquerade Fairy Tale
+2019-05:Memories Under the Ocean
+2019-06:Ragnarok Lost Temple
+2019-07:Warlock's Treasure Flame Devil
+2019-08:Wonderland Fantasy
+2019-09:Zodiac Divine
+2019-10:Thunder Lord
+2019-11:Galaxy Wanderer
+2019-12:Heart Beats Fantasy
+2020-01:Nature Spirit
+2020-02:Shattered Chimes
+2020-03:Deep Sea Treasure Land
+2020-04:Fantasy Circus
+2020-05:Wrangler Harp
+2020-06:Chocolate Factory
+2020-07:Summer Beach
+2020-08:Solomon's Soldier
+2020-09:Crystal World
