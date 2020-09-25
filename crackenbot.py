@@ -1,35 +1,23 @@
 import os
-import random
 import discord
 from dotenv import load_dotenv
+from discord.ext import commands
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 GUILD = os.getenv('DISCORD_GUILD')
 
-client = discord.Client()
+bot = commands.Bot(command_prefix='!cb ')
+index = []
 
-@client.event
-async def on_ready():
-    for guild in client.guilds:
-        if guild.name == GUILD:
-            break
+@bot.command('ping', help='Ping the bot. Are you here?')
+@commands.has_role('true mmo players')
+async def ping(ctx):
+    await ctx.send('pong')
 
-    print(
-        f'{client.user} is connected to the following guild:\n'
-        f'{guild.name}(id: {guild.id})'
-    )
-    members = '\n - '.join([member.name for member in guild.members])
-    print(f'Guild Members:\n - {members}')
+@bot.event
+async def on_command_error(ctx, error):
+    if isinstance(error, commands.errors.CheckFailure):
+        await ctx.send('You do not have the correct role for this command.')
 
-@client.event
-async def on_message(message):
-    if message.author == client.user:
-        return
-    if message.content == 'hello':
-        response = "hi"
-        await message.channel.send(response)
-
-
-
-client.run(TOKEN)
+bot.run(TOKEN)
