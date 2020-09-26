@@ -99,8 +99,9 @@ async def roll(ctx, gacha_num: int, roll_num=1):
 
         rand_roll = random.random() * 100
         roll_out = roll_dict[int(rand_roll)]
+        s = str(int(rand_roll)) + '% ' + roll_out
 
-        await message.edit(content=roll_out)
+        await message.edit(content=s)
 
 # @bot.command('check')
 # async def check():
