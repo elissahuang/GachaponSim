@@ -89,7 +89,7 @@ async def roll(ctx, gacha_num: int, roll_num: int):
         f = open(path)
         next(f)
         next(f)
-        roll_dict = {}
+        roll_dict = []
 
         for line in f:
             p, n = line.strip().split(':')
