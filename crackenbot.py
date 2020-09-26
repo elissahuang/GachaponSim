@@ -108,7 +108,8 @@ async def roll(ctx, gacha_num: int, roll_num=1):
             roll_out = random.choices(roll_list, weights=weight_list, k=roll_num)
             
             if roll_num == 1:
-                await message.edit(content=roll_out[0])
+                ret = '```GET ' + roll_out[0] + ' x1```'
+                await message.edit(content=ret)
             else:
                 results = dict(Counter(roll_out))
                 ret = '```Results from ' + wanted[0] + ' ' + wanted[1] + ' rolling ' + str(roll_num) + ' times:\n'
