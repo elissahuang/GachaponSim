@@ -4,7 +4,7 @@ import random
 
 from dotenv import load_dotenv
 from discord.ext import commands
-from collections import OrderedDict
+from collections import Counter, OrderedDict
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -82,7 +82,7 @@ async def roll(ctx, gacha_num: int, roll_num=1):
         await message.edit(content='Gacha not found.')
     else:
         wanted = index_list[gacha_num - 1]
-        path = 'Gachas/' + str(wanted[1]) + '-Gacha.txt'
+        path = 'Gachas/' + wanted[1] + '-Gacha.txt'
         s = wanted[0] + ' ' + wanted[1] + '\n'
         f = open(path)
         next(f)
@@ -98,10 +98,19 @@ async def roll(ctx, gacha_num: int, roll_num=1):
             roll_dict += [s] * p
         f.close()
 
-        rand_roll = random.random() * 100
-        roll_out = roll_dict[int(rand_roll)]
-
-        await message.edit(content=roll_out)
+        if roll_num == 1:
+            rand_roll = random.random() * 100
+            roll_out = roll_dict[int(rand_roll)]
+            await message.edit(content=roll_out)
+        else:
+            rand_roll = random.sample(range(0, 100), roll_num)
+            roll_out = [roll_dict[i] for i in rand_roll]
+            results = Counter(roll_out)
+            ret = 'Results from ' + wanted[0] + ' ' + wanted[1] + ' rolling ' + str(roll_num) + ' times:\n'
+            for k,v in results.items():
+                ret = ret + k + ': ' + str(v) + '\n'
+            print(ret)
+            await message.edit(content=ret)
 
 # @bot.command('check')
 # async def check():
