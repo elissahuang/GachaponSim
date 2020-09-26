@@ -45,14 +45,9 @@ async def preview(ctx, gacha_num: int):
     await ctx.send('Fetching gacha...')
     if not index:
         f = open('Gachas/index.txt', 'r')
-        s = 'Here is the list of all currently available gacha.\n'
-        i = 1
         for line in f:
             c = line.strip().split(':') # month-year:name
             index[c[1].strip()] = c[0]
-            fm = str(i) + ". " + c[0] + " " + c[1] + '\n'
-            s = s + fm
-            i += 1
         f.close()
     index_list = list(index.items())
     if gacha_num > len(index_list) or gacha_num < 1:
@@ -76,18 +71,13 @@ async def preview(ctx, gacha_num: int):
 
 @bot.command('roll', help = "Roll for a selected gacha")
 @commands.has_role('true mmo players')
-async def roll(ctx, gacha_num: int): 
-    await ctx.send('Fetching gacha...')
+async def roll(ctx, gacha_num: int, roll_num: int): 
+    await ctx.send('Rolling...')
     if not index:
         f = open('Gachas/index.txt', 'r')
-        s = 'Here is the list of all currently available gacha.\n'
-        i = 1
         for line in f:
             c = line.strip().split(':') # month-year:name
             index[c[1].strip()] = c[0]
-            fm = str(i) + ". " + c[0] + " " + c[1] + '\n'
-            s = s + fm
-            i += 1
         f.close()
     index_list = list(index.items())
     if gacha_num > len(index_list) or gacha_num < 1:
@@ -99,7 +89,6 @@ async def roll(ctx, gacha_num: int):
         f = open(path)
         next(f)
         next(f)
-
         roll_dict = {}
 
         for line in f:
@@ -107,7 +96,6 @@ async def roll(ctx, gacha_num: int):
             n = n.replace('_', ' ')
             p = float(p) * 100
             p = int(p)
-            s = s + str(p) + '% ' + n + '\n'
             roll_dict[p] = n
         f.close()
 
@@ -126,9 +114,6 @@ async def roll(ctx, gacha_num: int):
             roll_out = roll_dict[5]
 
         await ctx.send(roll_out)
-
-# @bot.command('roll')
-# async def roll():
 
 # @bot.command('check')
 # async def check():
