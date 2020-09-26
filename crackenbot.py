@@ -96,22 +96,11 @@ async def roll(ctx, gacha_num: int, roll_num: int):
             n = n.replace('_', ' ')
             p = float(p) * 100
             p = int(p)
-            roll_dict[p] = n
+            roll_dict += [n] * p
         f.close()
 
         rand_roll = random.random() * 100
-        if rand_roll < 31:
-            roll_out = roll_dict[31]
-        elif rand_roll > 31 and rand_roll < 59:
-            roll_out = roll_dict[28]
-        elif rand_roll > 59 and rand_roll < 82:
-            roll_out = roll_dict[23]
-        elif rand_roll > 82 and rand_roll < 89:
-            roll_out = roll_dict[7]
-        elif rand_roll > 89 and rand_roll < 95:
-            roll_out = roll_dict[6]
-        elif rand_roll > 95:
-            roll_out = roll_dict[5]
+        roll_out = roll_dict[int(rand_roll)]
 
         await ctx.send(roll_out)
 
