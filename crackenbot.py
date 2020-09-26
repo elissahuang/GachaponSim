@@ -89,28 +89,34 @@ async def roll(ctx, gacha_num: int, roll_num=1):
         next(f)
         roll_dict = []
 
+        weight_list = []
+        roll_list = []
+
         for line in f:
             p, n = line.strip().split(':')
             n = n.replace('_', ' ')
-            p = float(p) * 100
-            p = int(p)
-            s = str(p) + '% ' + n
-            roll_dict += [s] * p
+            p = int(float(p) * 100)
+            weight_list.append(p)
+            roll_list.append(n)
         f.close()
 
-        if roll_num == 1:
-            rand_roll = random.random() * 100
-            roll_out = roll_dict[int(rand_roll)]
-            await message.edit(content=roll_out)
-        else:
-            rand_roll = random.sample(range(0, 100), roll_num)
-            roll_out = [roll_dict[i] for i in rand_roll]
-            results = Counter(roll_out)
-            ret = 'Results from ' + wanted[0] + ' ' + wanted[1] + ' rolling ' + str(roll_num) + ' times:\n'
-            for k,v in results.items():
-                ret = ret + k + ': ' + str(v) + '\n'
-            print(ret)
-            await message.edit(content=ret)
+        roll_out = random.choices(roll_list, weights=weight_list)
+        await message.edit(content=roll_out[0])
+
+
+        # if roll_num == 1:
+        #     rand_roll = random.random() * 100
+        #     roll_out = roll_dict[int(rand_roll)]
+        #     await message.edit(content=roll_out)
+        # else:
+        #     rand_roll = random.sample(range(0, 100), roll_num)
+        #     roll_out = [roll_dict[i] for i in rand_roll]
+        #     results = Counter(roll_out)
+        #     ret = 'Results from ' + wanted[0] + ' ' + wanted[1] + ' rolling ' + str(roll_num) + ' times:\n'
+        #     for k,v in results.items():
+        #         ret = ret + k + ': ' + str(v) + '\n'
+        #     print(ret)
+        #     await message.edit(content=ret)
 
 # @bot.command('check')
 # async def check():
