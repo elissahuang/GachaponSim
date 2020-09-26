@@ -25,7 +25,7 @@ async def ping(ctx):
 @bot.command('list', help='List all currently available gachas.')
 @commands.has_role('true mmo players')
 async def list_g(ctx):
-    await ctx.send('Fetching list of gachas...')
+    message = await ctx.send('Fetching list of gachas...')
     f = open('Gachas/index.txt', 'r')
     s = 'Here is the list of all currently available gacha.\n'
     i = 1
@@ -36,13 +36,12 @@ async def list_g(ctx):
         s = s + fm
         i += 1
     f.close()
-    
-    await ctx.send(s)
+    await message.edit(content=s)
 
 @bot.command('preview', help="Preview the selected month's gacha")
 @commands.has_role('true mmo players')
 async def preview(ctx, gacha_num: int): 
-    await ctx.send('Fetching gacha...')
+    message = await ctx.send('Fetching gacha...')
     if not index:
         f = open('Gachas/index.txt', 'r')
         for line in f:
@@ -51,7 +50,7 @@ async def preview(ctx, gacha_num: int):
         f.close()
     index_list = list(index.items())
     if gacha_num > len(index_list) or gacha_num < 1:
-        await ctx.send('Gacha not found.')
+        await message.edit(content='Gacha not found.')
     else:
         wanted = index_list[gacha_num - 1]
         path = 'Gachas/' + str(wanted[1]) + '-Gacha.txt'
@@ -66,13 +65,12 @@ async def preview(ctx, gacha_num: int):
             p = int(p)
             s = s + str(p) + '% ' + n + '\n'
         f.close()
-
-        await ctx.send(s)
+        await message.edit(content=s)
 
 @bot.command('roll', help = "Roll for a selected gacha")
 @commands.has_role('true mmo players')
-async def roll(ctx, gacha_num: int, roll_num: int): 
-    await ctx.send('Rolling...')
+async def roll(ctx, gacha_num: int, roll_num=1): 
+    message = await ctx.send('Rolling...')
     if not index:
         f = open('Gachas/index.txt', 'r')
         for line in f:
@@ -81,7 +79,7 @@ async def roll(ctx, gacha_num: int, roll_num: int):
         f.close()
     index_list = list(index.items())
     if gacha_num > len(index_list) or gacha_num < 1:
-        await ctx.send('Gacha not found.')
+        await message.edit(content='Gacha not found.')
     else:
         wanted = index_list[gacha_num - 1]
         path = 'Gachas/' + str(wanted[1]) + '-Gacha.txt'
@@ -102,7 +100,7 @@ async def roll(ctx, gacha_num: int, roll_num: int):
         rand_roll = random.random() * 100
         roll_out = roll_dict[int(rand_roll)]
 
-        await ctx.send(roll_out)
+        await message.edit(content=roll_out)
 
 # @bot.command('check')
 # async def check():
