@@ -19,12 +19,12 @@ async def on_ready():
     print('{bot.user} is now connected.')
 
 @bot.command('ping', help='Ping the bot. Are you here?')
-@commands.has_role('true mmo players')
+# @commands.has_role('true mmo players')
 async def ping(ctx):
     await ctx.send('```pong```')
 
 @bot.command('list', help='List all currently available gachas.')
-@commands.has_role('true mmo players')
+# @commands.has_role('true mmo players')
 async def list_g(ctx):
     message = await ctx.send('Fetching list of gachas...')
     f = open('Gachas/index.txt', 'r')
@@ -41,7 +41,7 @@ async def list_g(ctx):
     await message.edit(content=s)
 
 @bot.command('preview', help="Preview the selected month's gacha")
-@commands.has_role('true mmo players')
+# @commands.has_role('true mmo players')
 async def preview(ctx, gacha_num: int): 
     message = await ctx.send('Fetching gacha...')
     if not index:
@@ -71,7 +71,7 @@ async def preview(ctx, gacha_num: int):
         await message.edit(content=s)
 
 @bot.command('roll', help = "Roll for a selected gacha")
-@commands.has_role('true mmo players')
+# @commands.has_role('true mmo players')
 async def roll(ctx, gacha_num: int, roll_num=1): 
     message = await ctx.send('Rolling...')
     if roll_num > 100 or roll_num < 1:
