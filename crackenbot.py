@@ -119,28 +119,28 @@ async def roll(ctx, gacha_num: int, roll_num=1):
                 ret = ret + 'USD Wasted: $' + str(roll_num * 30 / 6) + '```'
                 await message.edit(content=ret)
 
-@bot.command('rr', help = "Roll for this month's costume gacha")
-async def roll(ctx):
-    message = await ctx.send('Rolling...')
-    path = 'Gachas/Monthly-Gacha.txt'
-    f = open(path)
+# @bot.command('rr', help = "Roll for this month's costume gacha")
+# async def roll(ctx):
+#     message = await ctx.send('Rolling...')
+#     path = 'Gachas/Monthly-Gacha.txt'
+#     f = open(path)
 
-    weight_list = []
-    roll_list = []
+#     weight_list = []
+#     roll_list = []
 
-    for line in f:
-        p, n = line.strip().split(':')
-        n = n.replace('_', ' ')
-        p = int(float(p) * 100)
-        n = str(p) + '% ' + n
-        weight_list.append(p)
-        roll_list.append(n)
-    f.close()
+#     for line in f:
+#         p, n = line.strip().split(':')
+#         n = n.replace('_', ' ')
+#         p = int(float(p) * 100)
+#         n = str(p) + '% ' + n
+#         weight_list.append(p)
+#         roll_list.append(n)
+#     f.close()
 
-    roll_out = random.choices(roll_list, weights=weight_list, k=1)
+#     roll_out = random.choices(roll_list, weights=weight_list, k=1)
 
-    ret = '```GET ' + roll_out[0] + ' x1```'
-    await message.edit(content=ret)
+#     ret = '```GET ' + roll_out[0] + ' x1```'
+#     await message.edit(content=ret)
 
 # @bot.command('check')
 # async def check():
