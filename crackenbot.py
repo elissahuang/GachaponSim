@@ -119,6 +119,23 @@ async def roll(ctx, gacha_num: int, roll_num=1):
                 ret = ret + 'USD Wasted: $' + str(roll_num * 30 / 6) + '```'
                 await message.edit(content=ret)
 
+# @bot.command('eb', help = 'Roll for the Christmas Eve Wish II box')
+# async def eb(ctx, roll_num=1):
+#     message = await ctx.send('Rolling...')
+#     path = 'Gachas/xmas-2020.txt'
+#     f = open(path)
+#     next(f)
+
+#     a, b = line.strip().split(':')
+#     a = int(float(a) * 100)
+
+
+#     for line in f:
+#         p, n = line.strip().split(':')
+#         n = n.replace('_', ' ')
+
+
+
 # @bot.command('rr', help = "Roll for this month's costume gacha")
 # async def roll(ctx):
 #     message = await ctx.send('Rolling...')
