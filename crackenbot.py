@@ -14,14 +14,22 @@ GUILD = os.getenv('DISCORD_GUILD')
 bot = commands.Bot(command_prefix='!cb ')
 index = OrderedDict() # name: month-year
 
+mini = []
+mvp = []
+
 @bot.event
 async def on_ready():
     print('{bot.user} is now connected.')
 
+@bot.event
+async def on_command_error(ctx, error):
+    if isinstance(error, discord.errors.ClientException):
+        await ctx.send(error)
+
 @bot.command('ping', help='Ping the bot. Are you here?')
 # @commands.has_role('true mmo players')
 async def ping(ctx):
-    await ctx.send('```pong```')
+    await ctx.send('```pong1```')
 
 @bot.command('list', help='List all currently available gachas.')
 # @commands.has_role('true mmo players')
@@ -134,10 +142,8 @@ async def roll(ctx, gacha_num: int, roll_num=1):
 #         p, n = line.strip().split(':')
 #         n = n.replace('_', ' ')
 
-
-
 # @bot.command('rr', help = "Roll for this month's costume gacha")
-# async def roll(ctx):
+# async def rr(ctx):
 #     message = await ctx.send('Rolling...')
 #     path = 'Gachas/Monthly-Gacha.txt'
 #     f = open(path)
@@ -159,12 +165,21 @@ async def roll(ctx, gacha_num: int, roll_num=1):
 #     ret = '```GET ' + roll_out[0] + ' x1```'
 #     await message.edit(content=ret)
 
-# @bot.command('check')
-# async def check():
-
-@bot.event
-async def on_command_error(ctx, error):
-    if isinstance(error, commands.errors.CheckFailure):
-        await ctx.send('```You do not have the correct role for this command.```')
+@bot.command('boss', help="Roll for Combined Fate (MVP/Mini card)")
+async def boss(ctx):
+    message = await ctx.send("Rolling...")
+    r = random.choices(['mvp', 'mini'], weights=[21.6, 78.4], k=1)
+    card = ''
+    f = open('Gachas/boss.txt')
+    s = f.readline()
+    mini = s.strip().split(',')
+    s = f.readline()
+    mvp = s.strip().split(',')
+    f.close()
+    if r[0] == 'mini':
+        card = random.choice(mini) + ' Card'
+    else:
+        card = random.choice(mvp) + ' Card'
+    await message.edit(content=card)
 
 bot.run(TOKEN)
