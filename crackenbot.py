@@ -177,9 +177,9 @@ async def boss(ctx):
     mvp = s.strip().split(',')
     f.close()
     if r[0] == 'mini':
-        card = random.choice(mini) + ' Card'
+        card = '```' + random.choice(mini) + ' Card```'
     else:
-        card = random.choice(mvp) + ' Card'
+        card = '```' + random.choice(mvp) + ' Card```'
     await message.edit(content=card)
 
 bot.run(TOKEN)
