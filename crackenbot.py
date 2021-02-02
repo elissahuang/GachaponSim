@@ -29,7 +29,11 @@ async def on_command_error(ctx, error):
 @bot.command('ping', help='Ping the bot. Are you here?')
 # @commands.has_role('true mmo players')
 async def ping(ctx):
-    await ctx.send('```pong1```')
+    await ctx.send('```pongis```')
+
+@bot.command('hellothere')
+async def ping(ctx):
+    await ctx.send('```General Kenobi```')
 
 @bot.command('list', help='List all currently available gachas.')
 # @commands.has_role('true mmo players')
@@ -164,6 +168,65 @@ async def roll(ctx, gacha_num: int, roll_num=1):
 
 #     ret = '```GET ' + roll_out[0] + ' x1```'
 #     await message.edit(content=ret)
+
+# def bossroll():
+#     r = random.choices(['mvp', 'mini'], weights=[21.6, 78.4], k=1)
+#     card = ''
+#     f = open('Gachas/boss.txt')
+#     s = f.readline()
+#     mini = s.strip().split(',')
+#     s = f.readline()
+#     mvp = s.strip().split(',')
+#     f.close()
+#     if r[0] == 'mini':
+#         card = random.choice(mini)
+#     else:
+#         card = random.choice(mvp)
+#     return card
+
+@bot.command('bossroll', help="Roll for Combined Fate (MVP/Mini card)")
+async def bossroll(ctx, *args):
+    message = await ctx.send("Rolling...")
+    if len(args) == 0:
+        await message.edit(content="Please enter an MVP or Mini monster.")
+    # Extracting wanted card
+    elif len(args) > 0:
+        wanted_card = args[0]
+        if len(args) > 1:
+            for i in range(1, len(args)):
+                wanted_card = wanted_card + " " + args[i]
+        r = random.choices(['mvp', 'mini'], weights=[21.6, 78.4], k=1)
+        card = ''
+        f = open('Gachas/boss.txt')
+        s = f.readline()
+        mini = s.strip().split(',')
+        s = f.readline()
+        mvp = s.strip().split(',')
+        f.close()
+
+        if wanted_card not in mini and wanted_card not in mvp:
+            await message.edit(content="```That is not a valid MVP or MINI monster.```")
+        else:
+            count = 0
+            flag = False
+            while (flag == False):
+                if r[0] == 'mini':
+                    card = random.choice(mini)
+                else:
+                    card = random.choice(mvp)
+
+                if card == wanted_card:
+                    flag = True
+                    await message.edit(content="```It took you " + str(count) + " rolls to get " + wanted_card + " Card.```")
+                if count > 300:
+                    flag = True
+                    await message.edit(content="```You did not get the card in 300 rolls.```")
+                else:
+                    count += 1
+    else:
+        await message.edit(content="```An error occurred.```")
+  
+
 
 @bot.command('boss', help="Roll for Combined Fate (MVP/Mini card)")
 async def boss(ctx):
