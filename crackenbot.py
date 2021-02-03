@@ -207,7 +207,7 @@ async def bossroll(ctx, *args):
         if wanted_card not in mini and wanted_card not in mvp:
             await message.edit(content="```That is not a valid MVP or MINI monster.```")
         else:
-            count = 0
+            count = 1
             flag = False
             while (flag == False):
                 if r[0] == 'mini':
@@ -218,15 +218,17 @@ async def bossroll(ctx, *args):
                 if card == wanted_card:
                     flag = True
                     await message.edit(content="```It took you " + str(count) + " rolls to get " + wanted_card + " Card.```")
-                if count > 300:
+                if count > 500:
                     flag = True
-                    await message.edit(content="```You did not get the card in 300 rolls.```")
+                    await message.edit(content="```You did not get the card in 1000 rolls.```")
                 else:
                     count += 1
     else:
         await message.edit(content="```An error occurred.```")
-  
 
+@bot.command('broccoli', help="Roll for Combined Fate (MVP/Mini card)")
+async def boss(ctx):
+    message = await ctx.send("```GET 28% Small Cracken x1```")
 
 @bot.command('boss', help="Roll for Combined Fate (MVP/Mini card)")
 async def boss(ctx):
