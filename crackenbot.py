@@ -29,7 +29,7 @@ async def on_command_error(ctx, error):
 @bot.command('ping', help='Ping the bot. Are you here?')
 # @commands.has_role('true mmo players')
 async def ping(ctx):
-    await ctx.send('```pongis```')
+    await ctx.send('```pong```')
 
 @bot.command('hellothere')
 async def ping(ctx):
@@ -188,7 +188,7 @@ async def roll(ctx, gacha_num: int, roll_num=1):
 async def bossroll(ctx, *args):
     message = await ctx.send("Rolling...")
     if len(args) == 0:
-        await message.edit(content="Please enter an MVP or Mini monster.")
+        await message.edit(content="```Please enter an MVP or Mini monster.```")
     # Extracting wanted card
     elif len(args) > 0:
         wanted_card = args[0]
@@ -204,7 +204,10 @@ async def bossroll(ctx, *args):
         mvp = s.strip().split(',')
         f.close()
 
-        if wanted_card not in mini and wanted_card not in mvp:
+        mini_l = [m.lower() for m in mini]
+        mvp_l = [m.lower() for m in mvp]
+
+        if wanted_card.lower() not in mini_l and wanted_card.lower() not in mvp_l:
             await message.edit(content="```That is not a valid MVP or MINI monster.```")
         else:
             count = 1
@@ -215,7 +218,7 @@ async def bossroll(ctx, *args):
                 else:
                     card = random.choice(mvp)
 
-                if card == wanted_card:
+                if card.lower() == wanted_card.lower():
                     flag = True
                     await message.edit(content="```It took you " + str(count) + " rolls to get " + wanted_card + " Card.```")
                 if count > 500:
@@ -225,10 +228,6 @@ async def bossroll(ctx, *args):
                     count += 1
     else:
         await message.edit(content="```An error occurred.```")
-
-@bot.command('broccoli', help="Roll for Combined Fate (MVP/Mini card)")
-async def boss(ctx):
-    message = await ctx.send("```GET 28% Small Cracken x1```")
 
 @bot.command('boss', help="Roll for Combined Fate (MVP/Mini card)")
 async def boss(ctx):
@@ -246,5 +245,35 @@ async def boss(ctx):
     else:
         card = '```' + random.choice(mvp) + ' Card```'
     await message.edit(content=card)
+
+@bot.command('broccoli', help="Roll for Combined Fate (MVP/Mini card)")
+async def broccoli(ctx):
+    await ctx.send("```GET 28% Small Cracken x1```")
+
+@bot.command('carrot', help="To do or not to do, that is the question.")
+async def carrot(ctx, *args):
+    responses = [
+        'As I see it, yes.', 
+        'Ask again later.', 
+        'Better not tell you now.', 
+        'Cannot predict now.', 
+        'Concentrate and ask again.',
+        "Don't count on it.",
+        'It is certain.',
+        'It is decidedly so.',
+        'Most likely.',
+        'My reply is no.',
+        'My sources say no.',
+        'Outlook not so good.',
+        'Outlook good.',
+        'Reply hazy, try again.',
+        'Signs point to yes.',
+        'Very doubtful.',
+        'Without a doubt.',
+        'Yes.',
+        'Yes - definitely.',
+        'You may rely on it.'
+    ]
+    await ctx.send('```' + random.choice(responses) + '```')
 
 bot.run(TOKEN)
