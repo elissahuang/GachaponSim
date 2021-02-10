@@ -253,7 +253,7 @@ async def broccoli(ctx):
 @bot.command('carrot', help="To do or not to do, that is the question.")
 async def carrot(ctx, *args):
     if len(args) == 0:
-        await ctx.send('```Ask me a question first.```')
+        await ctx.send('```Fine keep your secrets. I do not carrot all.```')
     else:
         responses = [
             'As I see it, yes.', 
@@ -275,7 +275,8 @@ async def carrot(ctx, *args):
             'Without a doubt.',
             'Yes.',
             'Yes - definitely.',
-            'You may rely on it.'
+            'You may rely on it.',
+            'I do not carrot all.'
         ]
         await ctx.send('```' + random.choice(responses) + '```')
 
