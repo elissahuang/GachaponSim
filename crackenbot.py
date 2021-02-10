@@ -220,7 +220,7 @@ async def bossroll(ctx, *args):
 
                 if card.lower() == wanted_card.lower():
                     flag = True
-                    await message.edit(content="```It took you " + str(count) + " rolls to get " + wanted_card + " Card.```")
+                    await message.edit(content="```It took you " + str(count) + " rolls to get " + wanted_card.title() + " Card.```")
                 if count > 500:
                     flag = True
                     await message.edit(content="```You did not get the card in 1000 rolls.```")
