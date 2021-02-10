@@ -9,3 +9,7 @@ A gacha for the game Ragnarok M: Eternal Love!
 !cb roll <index> <amount>: Roll the gacha a set amount of times
   
 !cb boss: Roll Combined Fate for a mini/mvp card
+
+!cb bossroll <boss card>: How many times do you have to roll to get this card?
+  
+!cb carrot <question>: magic 8 ball
