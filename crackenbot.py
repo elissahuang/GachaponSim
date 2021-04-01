@@ -246,7 +246,7 @@ async def boss(ctx):
         card = '```' + random.choice(mvp) + ' Card```'
     await message.edit(content=card)
 
-@bot.command('broccoli', help="Roll for Combined Fate (MVP/Mini card)")
+@bot.command('broccoli', help="For General Cracken, may he be Bill.")
 async def broccoli(ctx):
     await ctx.send("```GET 28% Small Cracken x1```")
 
@@ -277,6 +277,7 @@ async def carrot(ctx, *args):
             'Yes - definitely.',
             'You may rely on it.',
             'I do not carrot all.'
+            'Inconclusive.'
         ]
         await ctx.send('```' + random.choice(responses) + '```')
 
