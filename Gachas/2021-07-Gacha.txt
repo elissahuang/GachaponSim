@@ -1,8 +1,8 @@
 2021-07
 Galactic Wanderer
 0.31:Space_Rest
-0.28:Choco_Star_Ring
-0.23:Infinite_Resonance
+0.28:Chocolate_Halo
+0.23:Unlimited_Resonance
 0.07:Poring_Acceleration
 0.06:Skyfall_Poring
-0.05:Meow_Radio_Wave
+0.05:Meow_Wave
