@@ -195,7 +195,7 @@ async def bossroll(ctx, *args):
         if len(args) > 1:
             for i in range(1, len(args)):
                 wanted_card = wanted_card + " " + args[i]
-        r = random.choices(['mvp', 'mini'], weights=[25.2, 74.8], k=1)
+        r = random.choices(['mvp', 'mini'], weights=[24.9, 75.1], k=1)
         card = ''
         f = open('Gachas/boss.txt')
         s = f.readline()
@@ -232,7 +232,7 @@ async def bossroll(ctx, *args):
 @bot.command('boss', help="Roll for Combined Fate (MVP/Mini card)")
 async def boss(ctx):
     message = await ctx.send("Rolling...")
-    r = random.choices(['mvp', 'mini'], weights=[21.6, 78.4], k=1)
+    r = random.choices(['mvp', 'mini'], weights=[24.9, 75.1], k=1)
     card = ''
     f = open('Gachas/boss.txt')
     s = f.readline()
