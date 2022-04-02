@@ -312,12 +312,4 @@ async def carrot(ctx, *args):
         embed = discord.Embed(title='The Great Carrot says . . .', description=s, color=color)
         await message.edit(content='', embed=embed)
 
-@bot.command('broncobuddy', hidden=True)
-@commands.has_role('true fans')
-async def broncobuddy(ctx, *args):
-    message = await ctx.send('Looking for your bronco buddy. . .')
-    s = 'Your bronco buddy is Pikr'
-    embed = discord.Embed(title='Heard you were looking for a bronco buddy. . .', description=s, color=color)
-    await message.edit(content=f'<@{198077263089106944}>', embed=embed)
-
 bot.run(TOKEN)

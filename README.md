@@ -1,15 +1,17 @@
 # GachaponSim
-A gacha for the game Ragnarok M: Eternal Love!
+A discord bot for simulating gachapon rolls for the mobile game Ragnarok M: Eternal Love!
 
 # Commands
-!cb list: See a list of all headwear gachas
+All commands are prefixed with !cb <command>
 
-!cb preview <index>: See the percentages and headgears you can get from gacha as indexed by the list
-  
-!cb roll <index> <amount>: Roll the gacha a set amount of times
-  
-!cb boss: Roll Combined Fate for a mini/mvp card
-
-!cb bossroll <boss card>: How many times do you have to roll to get this card?
-  
-!cb carrot <question>: magic 8 ball
+| Command         | Usage                     |                                                                                                                                                                                                                          |
+|-----------------|---------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Ping            | !cb ping                  | Checks if the bot is active.                                                                                                                                                                                             |
+| Hello There     | !cb hellothere            | Checks if the bot is active, but more fun.                                                                                                                                                                               |
+| List            | !cb list                  | Provides a list of all available headwear gachas, indexed by month.                                                                                                                                                      |
+| Preview         | !cb preview <index>       | Lists the headgear obtainable from the selected gacha, as well as their likelihood of appearing on a given roll.                                                                                                         |
+| Roll            | !cb roll <index> <amount> | Rolls the selected gacha the provided number of times and returns the resulting headgear. If the second parameter is greater than 1, also returns a tabulation of the amount of Big Cat Coin and USD spent on the rolls. |
+| Broccoli        | !cb broccoli              | "Rolls" once on the Deep Sea Treasure Land headgear gacha.                                                                                                                                                               |
+| Boss            | !cb boss                  | Rolls Combined Fate and returns the resulting MINI or MVP boss card.                                                                                                                                                     |
+| Boss Roll       | !cb bossroll <card>       | Rolls Combined Fate until the result is the selected card or the bot has rolled 500 times, whichever comes first. Returns the number of times rolled.                                                                    |
+| Carrot          | !cb carrot <question>     | Returns an answer to your question, Magic 8 Ball style.                                                                                                                                                                  |
