@@ -1,0 +1,8 @@
+2022-12
+Song of Ice and Snow
+0.31:Storm_Warrior
+0.28:Frozen_Hunter
+0.23:Downy_Bunny
+0.07:Weather_Forecast
+0.06:Chirp_Jingle
+0.05:Cute_Blower
